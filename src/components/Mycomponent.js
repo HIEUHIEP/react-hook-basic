@@ -8,7 +8,7 @@ class Mycomponent extends React.Component {
     render() {
         return (
             <div>
-                <UserInfor></UserInfor>
+                <UserInfor />
             </div>
         );
     }
