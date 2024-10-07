@@ -1,27 +1,27 @@
 import React from 'react';
 
-class UserInfor extends React.Component {
+class AddUserInfor extends React.Component {
     state = {
-        name: 'hieppu',
-        age: 30,
-        address: 'Quangnam'
+        name: '',
+        age: '',
+        address: ''
 
     };
 
     handleOnMouseOver(event) {
-        console.log(event)
+        // console.log(event)
     }
 
     handleOnChangeName = (event) => {
-        console.log(event.target.value);
-        console.log(event, event.target.value);
+        // console.log(event.target.value);
+        // console.log(event, event.target.value);
         this.setState({
             name: event.target.value
         })
     }
     handleOnChangeAge = (event) => {
-        console.log(event.target.value);
-        console.log(event, event.target.value);
+        // console.log(event.target.value);
+        // console.log(event, event.target.value);
         this.setState({
             age: event.target.value
         })
@@ -29,8 +29,12 @@ class UserInfor extends React.Component {
 
     handleOnSubmit(event) {
         event.preventDefault(); // tranh reload lai page sau khi submit.
-        alert('me');
-        console.log(this.state);
+        // alert('me');
+        this.props.handleAddNewUser({
+            id: Math.floor((Math.random() * 100) + 1) + '-random',
+            name: this.state.name,
+            age: this.state.age
+        });
     }
 
     render() {
@@ -57,4 +61,4 @@ class UserInfor extends React.Component {
     }
 }
 
-export default UserInfor;
+export default AddUserInfor;
