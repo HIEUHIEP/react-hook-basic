@@ -20,14 +20,14 @@ class Mycomponent extends React.Component {
     render() {
         // Don't repeat yourself
         return (
-            <div>
+            <>
                 <AddUserInfor
                     handleAddNewUser={this.handleAddNewUser}
                 />
                 <DisplayInfor
                     listUsers={this.state.listUsers}
                 />
-            </div>
+            </>
         );
     }
 }
