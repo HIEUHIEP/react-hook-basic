@@ -7,6 +7,31 @@ class DisplayInfor extends React.Component {
         isShowListUser: true
     }
 
+    // call when component is mounted ( load done )
+    componentDidMount = () => {
+        console.log('component is mounted');
+        setTimeout(() => {
+            document.title = 'New title'
+        }, 1000);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        // when change props, props...
+        console.log('component did update');
+
+        // when change this.state
+        // Can so sanh truoc/sau co thay doi thi moi xu ly
+        if (prevState.isShowListUser !== this.state.isShowListUser) {
+            console.log('component did update show list');
+        }
+    }
+
+    // call when component lose
+    componentWillUnmount() {
+        // Clean up any resources or event listeners before the component is unmounted
+        console.log('component will unmount');
+    }
+
     handleShowHide = () => {
         this.setState({
             isShowListUser: !this.state.isShowListUser
