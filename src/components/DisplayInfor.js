@@ -32,6 +32,7 @@ import logo from './../logo.svg';
 // }
 
 // function component
+// useState is a Hook
 const DisplayInfor = (props) => {
     const { listUsers } = props;
 
