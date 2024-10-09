@@ -18,7 +18,7 @@ const DisplayInfor = (props) => {
         () => {
             if (listUsers.length === 0)
                 console.log('No users to display');
-        }, [listUsers] // tracking listUsers
+        }, [listUsers] // tracking listUsers (Hook)
     );
 
     return (
