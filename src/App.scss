@@ -8,14 +8,74 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (min-width: 1400px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+      max-width: 1700px !important;
+  }
+}
+
 .app-container {
   .header-container{
-    .navbar-nav {
+    .navbar {
+      z-index: 10;
+      background-color: rgba(0,0,0,0) !important;
       .nav-link{
         &.active{ // chi 2 class ngang hang
           color: #00bfff;
         }
       }
+      .btn-login {
+        border: none;
+        background: transparent;
+        padding: 0 15px;
+        color: black;
+        height: 42px;
+      }
+      .btn-signup {
+        border: none;
+        border-radius: 5px;
+        background-color: black;
+        padding: 0 15px;
+        color: white;
+        height: 42px;
+        &:hover{
+          background: #7f7c7c;
+        }
+      }
     }
   }
+  .homepage-content {
+    padding: 100px;
+    width: 50%;
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    gap: 30px;
+    .title-top{
+      font-size: 45px;
+      font-weight: 600;
+    }
+    .title-mid{
+      font-size: 25px;
+    }
+    .title-bot{
+      button{
+        border-radius: 5px;
+        font-size: 20px;
+        background-color: black;
+        padding: 0 15px;
+        color: white;
+        height: 42px;
+        &:hover{
+          background: #7f7c7c;
+        }
+      }
+    }
+  }
+}
+
+video {
+  position: fixed;
+  bottom:0;
+  width: 100vw;
 }
