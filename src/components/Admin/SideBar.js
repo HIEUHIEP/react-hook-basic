@@ -15,6 +15,7 @@ import { MdDashboard } from 'react-icons/md';
 import { IoDiamondOutline } from "react-icons/io5";
 
 import "./SideBar.scss";
+import { Link } from 'react-router-dom';
 
 const SideBar = (props) => {
     const { image, collapsed, toggled, handleToggleSidebar } = props;
@@ -51,6 +52,7 @@ const SideBar = (props) => {
                             icon={<MdDashboard />}
                         >
                             Dashboard
+                            <Link to="/admins"></Link>
                         </MenuItem>
                     </Menu>
                     <Menu iconShape="circle">
@@ -58,7 +60,10 @@ const SideBar = (props) => {
                             icon={<IoDiamondOutline />}
                             title={'Features'}
                         >
-                            <MenuItem> Quản lý Users</MenuItem>
+                            <MenuItem>
+                                Quản lý Users
+                                <Link to="/admins/manage-users"></Link>
+                            </MenuItem>
                             <MenuItem> Quản lý Quiz</MenuItem>
                             <MenuItem> Quản lý Question</MenuItem>
                         </SubMenu>
