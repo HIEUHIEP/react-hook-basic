@@ -10,6 +10,11 @@ import {
 } from 'react-pro-sidebar';
 import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
 import sidebarBg from '../../assets/bg2.jpg';
+import { DiReact } from 'react-icons/di';
+import { MdDashboard } from 'react-icons/md';
+import { IoDiamondOutline } from "react-icons/io5";
+
+import "./SideBar.scss";
 
 const SideBar = (props) => {
     const { image, collapsed, toggled, handleToggleSidebar } = props;
@@ -35,28 +40,27 @@ const SideBar = (props) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
-                        Hieppu XXX
+                        <DiReact size={'3em'} color={'00bfff'}></DiReact>
+                        <span>Hieppu Page</span>
                     </div>
                 </SidebarHeader>
 
                 <SidebarContent>
                     <Menu iconShape="circle">
                         <MenuItem
-                            icon={<FaTachometerAlt />}
-                            suffix={<span className="badge red">New</span>}
+                            icon={<MdDashboard />}
                         >
-                            dashboard
+                            Dashboard
                         </MenuItem>
-                        <MenuItem icon={<FaGem />}> components</MenuItem>
                     </Menu>
                     <Menu iconShape="circle">
                         <SubMenu
-                            suffix={<span className="badge yellow">3</span>}
-                            icon={<FaRegLaughWink />}
+                            icon={<IoDiamondOutline />}
+                            title={'Features'}
                         >
-                            <MenuItem> 1</MenuItem>
-                            <MenuItem> 2</MenuItem>
-                            <MenuItem> 3</MenuItem>
+                            <MenuItem> Quản lý Users</MenuItem>
+                            <MenuItem> Quản lý Quiz</MenuItem>
+                            <MenuItem> Quản lý Question</MenuItem>
                         </SubMenu>
                     </Menu>
                 </SidebarContent>
@@ -69,7 +73,7 @@ const SideBar = (props) => {
                         }}
                     >
                         <a
-                            href="https://github.com/azouaoui-med/react-pro-sidebar"
+                            href="https://www.facebook.com/hieplh1/"
                             target="_blank"
                             className="sidebar-btn"
                             rel="noopener noreferrer"
@@ -81,7 +85,7 @@ const SideBar = (props) => {
                         </a>
                     </div>
                 </SidebarFooter>
-            </ProSidebar>
+            </ProSidebar >
         </>
     )
 }
