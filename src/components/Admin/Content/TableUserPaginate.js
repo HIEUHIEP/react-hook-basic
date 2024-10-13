@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import { getAllUsers } from '../../../service/apiService';
-const TableUser = (props) => {
-    const { listUsers } = props;
+import ReactPaginate from "react-paginate";
 
+const TableUserPaginate = (props) => {
+    const { listUsers, pageCount, fetchListUsersWithPaginate, currentPage, setCurrentPage } = props;
+    // Invoke when user click to request another page.
+    const handlePageClick = (event) => {
+        setCurrentPage(+event.selected + 1);
+        fetchListUsersWithPaginate(+event.selected + 1);
+    };
 
     return (
         <>
@@ -41,8 +47,32 @@ const TableUser = (props) => {
                     }
                 </tbody>
             </table>
+            <div className="user-paginate">
+                <ReactPaginate
+                    nextLabel="Next >"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={3}
+                    marginPagesDisplayed={2}
+                    pageCount={pageCount}
+                    previousLabel="< Previous"
+                    pageClassName="page-item"
+                    pageLinkClassName="page-link"
+                    previousClassName="page-item"
+                    previousLinkClassName="page-link"
+                    nextClassName="page-item"
+                    nextLinkClassName="page-link"
+                    breakLabel="..."
+                    breakClassName="page-item"
+                    breakLinkClassName="page-link"
+                    containerClassName="pagination"
+                    activeClassName="active"
+                    renderOnZeroPageCount={null}
+                    forcePage={+currentPage - 1} // cưởng chế layout page selected 
+                />
+            </div>
+
         </>
     )
 }
 
-export default TableUser;
+export default TableUserPaginate;
