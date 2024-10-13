@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { getAllUsers } from '../../../service/apiService';
 import ReactPaginate from "react-paginate";
 
 const TableUserPaginate = (props) => {
