@@ -3,11 +3,13 @@ import './Login.scss'
 import { useNavigate } from 'react-router';
 import { postLogin } from '../../service/apiService';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
 
 const Login = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const dispathch = useDispatch();
 
     const validateEmail = (email) => {
         return String(email)
@@ -21,7 +23,7 @@ const Login = (props) => {
     const handleLogin = async () => {
         //validate
         const isValidEmail = validateEmail(email);
-        if (isValidEmail) {
+        if (false) {
             toast.error('Invalid email');
             return;
         }
@@ -33,13 +35,17 @@ const Login = (props) => {
         }
 
         //call API
-        let res = await postLogin(email, password);
-        if (res.EC === 0) {
-            toast.success(res.EM);
+        let data = await postLogin(email, password);
+        if (data.EC === 0) {
+            dispathch({
+                type: 'FETCH_USER_LOGIN_SUCCESS',
+                payload: data
+            })
+            toast.success(data.EM);
             navigate('/');
         }
-        if (res.EC !== 0) {
-            toast.error(res.EM);
+        if (data.EC !== 0) {
+            toast.error(data.EM);
         }
 
     }
