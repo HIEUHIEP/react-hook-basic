@@ -5,6 +5,8 @@ import { postLogin } from '../../service/apiService';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { doLogin } from '../../redux/action/userAction';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
 
 
 const Login = (props) => {
@@ -12,6 +14,7 @@ const Login = (props) => {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [isLoadingData, setIsLoadingData] = useState(false);
 
     const validateEmail = (email) => {
         return String(email)
@@ -23,6 +26,7 @@ const Login = (props) => {
     }
 
     const handleLogin = async () => {
+        setIsLoadingData(true);
         //validate
         const isValidEmail = validateEmail(email);
         if (false) {
@@ -41,10 +45,12 @@ const Login = (props) => {
         if (data.EC === 0) {
             dispatch(doLogin(data))
             toast.success(data.EM);
+            setIsLoadingData(false)
             navigate('/');
         }
         if (data.EC !== 0) {
             toast.error(data.EM);
+            setIsLoadingData(false);
         }
 
     }
@@ -81,7 +87,11 @@ const Login = (props) => {
                     <button
                         className="btn-submit"
                         onClick={() => handleLogin()}
-                    >Login</button>
+                        disabled={isLoadingData}
+                    >
+                        {isLoadingData && <AiOutlineLoading3Quarters className="loader-icon" />}
+                        <span>Login</span>
+                    </button>
                 </div>
                 <div className="text-center">
                     <span role="button" onClick={() => { navigate('/') }}>&#60; &#60;Go to HomePage</span>
